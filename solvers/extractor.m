@@ -179,7 +179,7 @@ for idx_partition = num_partitions:-1:1
     io_time = io_time + toc;
 
     % Sometimes partitions contain no signal. Terminate in that case
-    std_M = nanstd(M_small(:));
+    std_M = std(M_small(:),'omitnan');
     if std_M < SIGNAL_LOWER_THRESHOLD
         dispfun('\t \t \t No signal detected, terminating...\n', ...
             config.verbose ==2);
